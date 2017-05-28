@@ -9,7 +9,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "nstart": "node ./bin/www"
+    "nstart": "node ./bin/www",
+    "gulp": "gulp",
+    "rimraf": "rimraf",
+    "bundle": "gulp bundle",
+    "postbundle": "rimraf dist"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +52,11 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "~2.2.0",
+    "rimraf": "^2.5.2",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "2.13.6",
+    "gulp-inline-ng2-template": "2.0.1",
+    "systemjs-builder": "^0.15.16"
   }
 }
