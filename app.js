@@ -4,7 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
+//Database Connection
+mongoose.connect('mongodb://localhost/piconnect');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+//Require all routes
 var piApi = require('./routes/piapi');
 var angularApp = require('./routes/angularapp');
 
@@ -18,7 +25,7 @@ app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'dist')));
