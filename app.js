@@ -7,7 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 //Database Connection
-mongoose.connect('mongodb://localhost/piconnect');
+mongoose.connect('mongodb://localhost/piconnect' , {
+  useMongoClient: true
+});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
