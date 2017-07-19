@@ -7,8 +7,8 @@ describe('piconnect-server App', () => {
     page = new PiconnectServerPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('pi works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
