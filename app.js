@@ -14,7 +14,8 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 //Require all routes
-var piApi = require('./routes/piapi');
+var devApi = require('./routes/devapi');
+var api = require('./routes/api');
 var angularApp = require('./routes/angularapp');
 
 var app = express();
@@ -31,9 +32,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use( "/images" ,express.static(path.join(__dirname, 'images')));
+app.use( "/uploads" ,express.static(path.join(__dirname, 'uploads')));
 
-app.use('/pi-api', piApi);
+app.use('/api/v1', devApi);
+app.use('/api', api);
 app.use( "*" , angularApp );
 
 // catch 404 and forward to error handler
