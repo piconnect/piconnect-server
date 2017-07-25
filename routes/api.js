@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 //Require All Apis
-var userApi = require('../appApi/userApi');
-var mainApi = require('../appApi/mainApi');
+var userController = require('../controllers/userController');
+var mainControler = require('../controllers/mainController');
 
 var db = {
     "Name" : "Anuj Verma",
@@ -18,8 +18,8 @@ router.get('/', function(req, res, next) {
 });
 
 // Add Router Middlewares
-router.post('/register', userApi.register);
-router.post('/login', userApi.login)
-router.get('/profile', userApi.profile);
+router.post('/register', userController.register);
+router.post('/login', userController.login)
+router.get('/profile', userController.profile);
 
 module.exports = router;
