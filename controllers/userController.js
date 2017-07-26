@@ -1,7 +1,9 @@
+var passport = require('passport');
 var mongoose = require('mongoose');
 
 //Require All models
-var user = require('../models/users');
+var Users = require('../models/users');
+var user = new Users;
 
 var UserController = new Object;
 
@@ -11,7 +13,11 @@ UserController.register = function(req, res) {
 
     user.setPassword(req.body.password);
 
-    user.save(function(err) {
+    user.save(function(err , data) {
+        if(err) {
+            res.json({"status" : false})
+            return console.error(err);
+        }
         var token = user.generateJwt();
         res.status(200);
         res.json({
@@ -21,10 +27,12 @@ UserController.register = function(req, res) {
 };
 
 UserController.login = function(req, res) {
+    console.log(req.body);
     passport.authenticate('local', function(err, user, info){
     var token;
 
     // If Passport throws/catches an error
+    console.log("error is "+err);
     if (err) {
         res.status(404).json(err);
         return;

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var User = require('../models/users');
 
-passport.use(new LocalStrategy({
+var stratagy = new LocalStrategy({
     usernameField: 'email'
   },
   function(username, password, done) {
@@ -26,4 +26,6 @@ passport.use(new LocalStrategy({
       return done(null, user);
     });
   }
-));
+);
+
+module.exports = stratagy;

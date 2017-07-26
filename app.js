@@ -15,7 +15,8 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 // Require all Configuration
-require('./config/passport');
+var passConfig = require('./config/passport');
+passport.use(passConfig);
 
 //Require all routes
 var devApi = require('./routes/devapi');
