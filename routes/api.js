@@ -1,9 +1,15 @@
 var express = require('express');
+var jwt = require('express-jwt');
 var router = express.Router();
 
 //Require All Apis
 var userController = require('../controllers/userController');
 var mainControler = require('../controllers/mainController');
+
+var auth = jwt({
+  secret: process.env.JWT_SECRET,
+  userProperty: 'payload'
+});
 
 var db = {
     "Name" : "Anuj Verma",
@@ -20,6 +26,6 @@ router.get('/', function(req, res, next) {
 // Add Router Middlewares
 router.post('/register', userController.register);
 router.post('/login', userController.login)
-router.get('/profile', userController.profile);
+router.get('/profile', auth, userController.profileRead);
 
 module.exports = router;
