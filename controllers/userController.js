@@ -27,12 +27,10 @@ UserController.register = function(req, res) {
 };
 
 UserController.login = function(req, res) {
-    console.log(req.body);
     passport.authenticate('local', function(err, user, info){
-    var token;
+    var token = "";
 
     // If Passport throws/catches an error
-    console.log("error is "+err);
     if (err) {
         res.status(404).json(err);
         return;
@@ -43,7 +41,7 @@ UserController.login = function(req, res) {
         token = user.generateJwt();
         res.status(200);
         res.json({
-        "token" : token
+            "token" : token
         });
     } else {
         // If user is not found
@@ -60,7 +58,7 @@ UserController.profileRead = function(req, res) {
         });
     } else {
     // Otherwise continue
-    User
+    Users
         .findById(req.payload._id)
         .exec(function(err, user) {
         res.status(200).json(user);

@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 
 //Database Connection
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/piconnect' , {
   useMongoClient: true
 });
