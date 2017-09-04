@@ -20,7 +20,7 @@
       "prefix": "app-pi",
       "styles": [
         "../node_modules/@angular/material/prebuilt-themes/purple-green.css",
-        "styles.less"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -52,7 +52,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }

@@ -4,16 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignedInComponent } from './signed-in/signed-in.component';
+import { SignedOutComponent } from './signed-out/signed-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent
+    SignedInComponent,
+    SignedOutComponent
   ],
   imports: [
     BrowserModule,
