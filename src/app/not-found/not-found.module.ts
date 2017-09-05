@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
+import { NotFoundRoutingModule } from './not-found-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    NotFoundRoutingModule
   ],
   declarations: []
 })
-export class SharedModule { }
+export class NotFoundModule { }

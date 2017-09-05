@@ -4,8 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    children: []
-  }
+    loadChildren: './signed-in/signed-in.module#SignedInModule'
+  },
+  { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SignedOutRoutingModule } from './signed-out-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -10,7 +11,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 @NgModule({
   imports: [
     CommonModule,
-    SignedOutRoutingModule
+    SignedOutRoutingModule,
+    FormsModule
   ],
   declarations: [
     LoginComponent,

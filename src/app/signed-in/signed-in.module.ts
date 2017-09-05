@@ -1,22 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SignedInRoutingModule } from './signed-in-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TestPageComponent } from './test-page/test-page.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    SignedInRoutingModule
+    SignedInRoutingModule,
+    FormsModule
   ],
-  declarations: [
-    DashboardComponent,
-    TestPageComponent
-  ],
-  exports: [
-    DashboardComponent,
-    TestPageComponent
-  ]
+  declarations: []
 })
 export class SignedInModule { }

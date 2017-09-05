@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
+import { ResetPasswordRoutingModule } from './reset-password-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    ResetPasswordRoutingModule
   ],
   declarations: []
 })
-export class SharedModule { }
+export class ResetPasswordModule { }
