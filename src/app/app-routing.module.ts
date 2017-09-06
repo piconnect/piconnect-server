@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: './signed-in/signed-in.module#SignedInModule'
   },
   { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
-  { path: '**', redirectTo: 'not-found' }
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 
 @NgModule({
