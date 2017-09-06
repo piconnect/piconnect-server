@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CoreModule } from './core/core.module';
+
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './signed-in/signed-in.module#SignedInModule'
+    loadChildren: './signed-in/signed-in.module#SignedInModule',
+    canActivate : [AuthGuard]
   },
   { path : 'login', loadChildren : './login/login.module#LoginModule' },
   { path : 'register', loadChildren : './register/register.module#RegisterModule' },
