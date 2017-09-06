@@ -6,8 +6,12 @@ const routes: Routes = [
     path: '',
     loadChildren: './signed-in/signed-in.module#SignedInModule'
   },
-  { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
-  { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
+  { path : 'login', loadChildren : './login/login.module#LoginModule' },
+  { path : 'register', loadChildren : './register/register.module#RegisterModule' },
+  { path : 'forget-password', loadChildren : './forget-password/forget-password.module#ForgetPasswordModule' },
+  { path : 'reset-password', loadChildren : './reset-password/reset-password.module#ResetPasswordModule' },
+  { path : 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
+  { path : '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 
 @NgModule({
