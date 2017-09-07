@@ -54,6 +54,29 @@ import {MdPaginatorModule} from '@angular/material';
     MdSortModule,
     MdPaginatorModule
   ],
-  declarations: []
+  exports: [
+    MdCheckboxModule,
+    MdInputModule,
+    MdRadioModule,
+    MdSelectModule,
+    MdDatepickerModule,
+    MdSlideToggleModule,
+    MdMenuModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    MdListModule,
+    MdCardModule,
+    MdGridListModule,
+    MdTabsModule,
+    MdExpansionModule,
+    MdButtonModule,
+    MdIconModule,
+    MdProgressBarModule,
+    MdProgressSpinnerModule,
+    MdDialogModule,
+    MdTableModule,
+    MdSortModule,
+    MdPaginatorModule
+  ]
 })
 export class MaterialModule { }
