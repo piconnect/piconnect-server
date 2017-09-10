@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ConfirmPasswordValidator } from '../shared/confirm-password-validator';
 
 @Component({
   selector: 'app-pi-register',
@@ -17,28 +19,8 @@ export class RegisterComponent {
       'conf_password': [ '', [ Validators.required ] ],
     },
     {
-      validator: this.confirmPasswordValidator
+      validator: ConfirmPasswordValidator.validator( 'password', 'conf_password' )
     });
-  }
-
-  confirmPasswordValidator( group: FormGroup ) {
-    const password = group.controls['password'];
-    const confirmPassword = group.controls['conf_password'];
-    if (password.value !== confirmPassword.value) {
-      let errors = {};
-      if ( confirmPassword.value === '' ) {
-        errors = {
-          'required' : true,
-          'password_match': true
-        };
-      } else {
-        errors = {
-          'password_match': true
-        };
-      }
-      return confirmPassword.setErrors(errors);
-    }
-    return null;
   }
 
   register() {
