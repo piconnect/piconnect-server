@@ -1,25 +1,33 @@
 <md-card class="signed-out-wrapper">
     <h2 class="full-width text-center">Login</h2>
     <p class="full-width text-center">Please enter your email and password to login</p>
-    <form name="login_form">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
         <md-form-field class="full-width">
-            <input mdInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
-            <!-- <md-error *ngIf="emailFormControl.hasError('incorrect')">
-                Please enter your correct email
+            <input
+            mdInput 
+            placeholder="Email" 
+            type="text" 
+            formControlName="email">
+            <md-error *ngIf="loginForm.get('email').hasError('email') && loginForm.get('email').value">
+                Please enter a <strong>valid</strong> email
             </md-error>
-            <md-error *ngIf="emailFormControl.hasError('required')">
+            <md-error *ngIf="loginForm.get('email').hasError('required') && !loginForm.get('email').value">
                 Email is <strong>required</strong>
-            </md-error> -->
+            </md-error> 
         </md-form-field>
         <md-form-field class="full-width">
-            <input mdInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
-            <!-- <md-error *ngIf="passwordFormControl.hasError('incorrect')">
-                Please enter your correct password
-            </md-error> -->
+            <input 
+            mdInput 
+            placeholder="Password" 
+            type="password" 
+            formControlName="password">
+            <md-error *ngIf="loginForm.get('password').hasError('required')">
+                Password is <strong>required</strong>
+            </md-error> 
         </md-form-field>
         <a routerLink="/forget-password" md-button class="float-right" color="warn">Forget Password</a>
         <div class="btn-wrapper">
-            <button md-raised-button color="primary" (click)="login()" >Login</button>
+            <button md-raised-button color="primary" type="submit">Login</button>
             <a routerLink="/register" md-raised-button class="float-right">Register</a>
         </div>
     </form>

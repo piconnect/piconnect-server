@@ -11,4 +11,15 @@ export class UserService {
     console.log( data );
   }
 
+  loginUser ( data ) {
+    console.log( data );
+  }
+
+  resetPassword( data ) {
+    console.log( data );
+  }
+
+  forgetPassword( data ) {
+    console.log( data );
+  }
 }
