@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ConfirmPasswordValidator } from '../shared/confirm-password-validator';
+import { UserService } from '../core/user/user.service';
 
 @Component({
   selector: 'app-pi-register',
@@ -11,7 +12,7 @@ import { ConfirmPasswordValidator } from '../shared/confirm-password-validator';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor ( formbuilder: FormBuilder ) {
+  constructor ( formbuilder: FormBuilder, private userService: UserService ) {
     this.registerForm = formbuilder.group({
       'name': [ '', Validators.required ],
       'email': [ '', [ Validators.required, Validators.email ]],
@@ -24,6 +25,10 @@ export class RegisterComponent {
   }
 
   register() {
-    console.log( this.registerForm.get('conf_password').errors );
+    if ( this.registerForm.status === 'INVALID' ) {
+      return;
+    }
+    const data = this.registerForm.value;
+    this.userService.registerUser( data );
   }
 }
