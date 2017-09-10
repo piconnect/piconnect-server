@@ -3,11 +3,11 @@ var mongoose = require('mongoose');
 
 //Require All models
 var Users = require('../models/users');
-var user = new Users;
 
 var UserController = new Object;
 
 UserController.register = function(req, res) {
+    var user = new Users;
     user.name = req.body.name;
     user.email = req.body.email;
 
@@ -27,6 +27,7 @@ UserController.register = function(req, res) {
 };
 
 UserController.login = function(req, res) {
+    var user = new Users;
     passport.authenticate('local', function(err, user, info){
     var token = "";
 
@@ -51,6 +52,7 @@ UserController.login = function(req, res) {
 }
 
 UserController.profileRead = function(req, res) {
+    var user = new Users;
   // If no user ID exists in the JWT return a 401
     if (!req.payload._id) {
         res.status(401).json({
