@@ -1,40 +1,56 @@
 <md-card class="signed-out-wrapper">
     <h2 class="full-width text-center">Register</h2>
     <p class="full-width text-center">Register your account to use Piconnect services for free</p>
-    <form name="login_form">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
         <md-form-field class="full-width">
-            <input mdInput placeholder="Full name" type="text" [(ngModel)]="name" name="name" required>
-            <!-- <md-error *ngIf="emailFormControl.hasError('incorrect')">
-                Please enter your correct email
+            <input 
+            mdInput 
+            placeholder="Full name" 
+            type="text"  
+            formControlName="name">
+            <md-error *ngIf="registerForm.get('name').hasError('required')">
+                Name is <strong>required</strong>
+            </md-error> 
+        </md-form-field>
+        <md-form-field class="full-width">
+            <input
+            mdInput 
+            placeholder="Email" 
+            type="text" 
+            formControlName="email">
+            <md-error *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').value">
+                Please enter a <strong>valid</strong> email
             </md-error>
-            <md-error *ngIf="emailFormControl.hasError('required')">
+            <md-error *ngIf="registerForm.get('email').hasError('required') && !registerForm.get('email').value">
                 Email is <strong>required</strong>
-            </md-error> -->
+            </md-error> 
         </md-form-field>
         <md-form-field class="full-width">
-            <input mdInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
-            <!-- <md-error *ngIf="emailFormControl.hasError('incorrect')">
-                Please enter your correct email
+            <input 
+            mdInput 
+            placeholder="Password" 
+            type="password" 
+            formControlName="password">
+            <md-error *ngIf="registerForm.get('password').hasError('required')">
+                Password is <strong>required</strong>
+            </md-error> 
+        </md-form-field>
+        <md-form-field class="full-width">
+            <input
+            mdInput 
+            placeholder="Confirm Password" 
+            type="password" 
+            formControlName="conf_password">
+            <md-error *ngIf="registerForm.get('conf_password').hasError('required') && !registerForm.get('conf_password').value">
+                Confirm Password is <strong>required</strong>
             </md-error>
-            <md-error *ngIf="emailFormControl.hasError('required')">
-                Email is <strong>required</strong>
-            </md-error> -->
-        </md-form-field>
-        <md-form-field class="full-width">
-            <input mdInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
-            <!-- <md-error *ngIf="passwordFormControl.hasError('incorrect')">
-                Please enter your correct password
-            </md-error> -->
-        </md-form-field>
-        <md-form-field class="full-width">
-            <input mdInput placeholder="Confirm Password" type="password" [(ngModel)]="conf_password" name="conf_password" required>
-            <!-- <md-error *ngIf="passwordFormControl.hasError('incorrect')">
-                Please enter your correct password
-            </md-error> -->
+            <md-error *ngIf="registerForm.get('conf_password').hasError('password_match') && registerForm.get('conf_password').value">
+                Your passwords doesn't <strong>matched</strong>
+            </md-error> 
         </md-form-field>
         <div class="btn-wrapper">
             <a routerLink="/login" md-raised-button >Login</a>
-            <button md-raised-button color="primary" class="float-right" (click)="register()">Register</button>
+            <button type="submit" md-raised-button color="primary" class="float-right">Register</button>
         </div>
     </form>
 </md-card>
