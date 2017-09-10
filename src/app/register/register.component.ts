@@ -29,6 +29,9 @@ export class RegisterComponent {
       return;
     }
     const data = this.registerForm.value;
-    this.userService.registerUser( data );
+    this.userService.registerUser( data )
+    .subscribe( response =>
+      console.log( response )
+    );
   }
 }

@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import 'rxjs/Rx';
+
+interface TokenResponse {
+  token: string;
+}
 
 @Injectable()
 export class UserService {
 
-  constructor( private http: Http ) { }
+  constructor( private http: HttpClient ) { }
 
   registerUser( data ) {
-    // return this.http.post('/api/register', data);
-    console.log( data );
+    return this.http.post('/api/register', data, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    });
   }
 
   loginUser ( data ) {

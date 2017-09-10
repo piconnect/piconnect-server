@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './user/user.service';
@@ -8,7 +8,7 @@ import { UserService } from './user/user.service';
 @NgModule({
   imports: [
     CommonModule,
-    HttpModule
+    HttpClientModule
   ],
   declarations: [],
   providers : [
