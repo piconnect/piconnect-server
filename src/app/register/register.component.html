@@ -1,3 +1,40 @@
-<p>
-  register works!
-</p>
+<md-card class="signed-out-wrapper">
+    <h2 class="full-width text-center">Register</h2>
+    <p class="full-width text-center">Register your account to use Piconnect services for free</p>
+    <form name="login_form">
+        <md-form-field class="full-width">
+            <input mdInput placeholder="Full name" type="text" [(ngModel)]="name" name="name" required>
+            <!-- <md-error *ngIf="emailFormControl.hasError('incorrect')">
+                Please enter your correct email
+            </md-error>
+            <md-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+            </md-error> -->
+        </md-form-field>
+        <md-form-field class="full-width">
+            <input mdInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
+            <!-- <md-error *ngIf="emailFormControl.hasError('incorrect')">
+                Please enter your correct email
+            </md-error>
+            <md-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+            </md-error> -->
+        </md-form-field>
+        <md-form-field class="full-width">
+            <input mdInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
+            <!-- <md-error *ngIf="passwordFormControl.hasError('incorrect')">
+                Please enter your correct password
+            </md-error> -->
+        </md-form-field>
+        <md-form-field class="full-width">
+            <input mdInput placeholder="Confirm Password" type="password" [(ngModel)]="conf_password" name="conf_password" required>
+            <!-- <md-error *ngIf="passwordFormControl.hasError('incorrect')">
+                Please enter your correct password
+            </md-error> -->
+        </md-form-field>
+        <div class="btn-wrapper">
+            <a routerLink="/login" md-raised-button >Login</a>
+            <button md-raised-button color="primary" class="float-right" (click)="register()">Register</button>
+        </div>
+    </form>
+</md-card>
