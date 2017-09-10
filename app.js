@@ -45,7 +45,7 @@ app.use('/api', api);
 app.use( "*" , angularApp );
 
 app.use(function (err, req, res, next) {
-  res.sendfile( path.join( __dirname, "dist/index.html" ));
+  res.sendFile( path.join( __dirname, "dist/index.html" ));
 });
 
 module.exports = app;
