@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UserService } from '../core/user/user.service';
 
@@ -11,7 +12,7 @@ import { UserService } from '../core/user/user.service';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor ( formbuilder: FormBuilder, private userService: UserService ) {
+  constructor ( formbuilder: FormBuilder, private userService: UserService, private router: Router ) {
     this.loginForm = formbuilder.group({
       'email': [ '', [ Validators.required, Validators.email ]],
       'password': [ '', Validators.required ]
@@ -26,7 +27,8 @@ export class LoginComponent {
     this.userService.loginUser( data )
     .subscribe(
       response => {
-        console.log(response.token);
+        localStorage.setItem( 'isPiconnectLoggedIn', response.token );
+        this.router.navigate(['dashboard']);
       },
       err => {
         if ( err.error.message === 'wrong_password' ) {
