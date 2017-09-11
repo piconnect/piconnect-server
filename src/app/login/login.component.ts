@@ -23,6 +23,20 @@ export class LoginComponent {
       return;
     }
     const data = this.loginForm.value;
-    this.userService.loginUser( data );
+    this.userService.loginUser( data )
+    .subscribe(
+      response => {
+        console.log(response.token);
+      },
+      err => {
+        if ( err.error.message === 'wrong_password' ) {
+          const password = this.loginForm.controls['password'];
+          password.setErrors({'wrong_password' : true});
+        } else if ( err.error.message === 'not_found' ) {
+          const email = this.loginForm.controls['email'];
+          email.setErrors({'not_found' : true});
+        }
+      }
+    );
   }
 }

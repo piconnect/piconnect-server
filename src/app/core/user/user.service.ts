@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 
 interface TokenResponse {
-  status: boolean;
   token: string;
 }
 
@@ -20,7 +19,9 @@ export class UserService {
   }
 
   loginUser ( data ) {
-    console.log( data );
+    return this.http.post<TokenResponse>('/api/login', data, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    });
   }
 
   resetPassword( data ) {

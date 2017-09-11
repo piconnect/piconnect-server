@@ -12,7 +12,7 @@ UserController.register = function(req, res) {
         if (user) {
             res.status(409);
             res.json({
-                "status" : false
+                "status" : false, "message" : "accountAlreadyRegistred"
             });
         } else {
             var user = new Users;
@@ -23,13 +23,13 @@ UserController.register = function(req, res) {
             
             user.save(function(err , data) {
                 if(err) {
-                    res.json({"status" : false, "message" : "accountAlreadyRegistred"})
+                    res.status(404);
+                    res.json({"status" : false})
                     return console.error(err);
                 }
                 var token = user.generateJwt();
                 res.status(200);
                 res.json({
-                    "status" : true,
                     "token" : token
                 });
             });

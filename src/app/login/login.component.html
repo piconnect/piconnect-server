@@ -13,7 +13,10 @@
             </md-error>
             <md-error *ngIf="loginForm.get('email').hasError('required') && !loginForm.get('email').value">
                 Email is <strong>required</strong>
-            </md-error> 
+            </md-error>
+            <md-error *ngIf="loginForm.get('email').hasError('not_found')">
+                Please enter your correct email
+            </md-error>
         </md-form-field>
         <md-form-field class="full-width">
             <input 
@@ -23,7 +26,10 @@
             formControlName="password">
             <md-error *ngIf="loginForm.get('password').hasError('required')">
                 Password is <strong>required</strong>
-            </md-error> 
+            </md-error>
+            <md-error *ngIf="loginForm.get('password').hasError('wrong_password')">
+                Your entered password is incorrect.
+            </md-error>
         </md-form-field>
         <a routerLink="/forget-password" md-button class="float-right" color="warn">Forget Password</a>
         <div class="btn-wrapper">

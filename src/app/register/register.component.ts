@@ -33,7 +33,6 @@ export class RegisterComponent {
     this.userService.registerUser( data )
     .subscribe(
       response => {
-        console.log( 'status =' + response.status );
         console.log( 'token =' + response.token );
       },
       (err: HttpErrorResponse) => {
@@ -41,8 +40,8 @@ export class RegisterComponent {
           // A client-side or network error occurred. Handle it accordingly.
           console.log('An error occurred:', err.error.message);
         } else {
-          const password = this.registerForm.controls['email'];
-          password.setErrors({'already_registred' : true});
+          const email = this.registerForm.controls['email'];
+          email.setErrors({'already_registred' : true});
         }
       }
     );
