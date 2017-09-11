@@ -1,6 +1,8 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
 
+var transporter = require('../config/nodemailer');
+
 //Require All models
 var Users = require('../models/users');
 
@@ -28,6 +30,19 @@ UserController.register = function(req, res) {
                     return console.error(err);
                 }
                 var token = user.generateJwt();
+                var mailOptions = {
+                    from: process.env.EMAIL_ADDRESS,
+                    to: user.email,
+                    subject: 'Piconnect Verification Mail',
+                    html: 'Hi '+user.name+',<br>You have just signed up for Piconnect Services. Hope you enjoy using our services.'
+                };
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
                 res.status(200);
                 res.json({
                     "token" : token
