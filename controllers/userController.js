@@ -7,22 +7,33 @@ var Users = require('../models/users');
 var UserController = new Object;
 
 UserController.register = function(req, res) {
-    var user = new Users;
-    user.name = req.body.name;
-    user.email = req.body.email;
-
-    user.setPassword(req.body.password);
-
-    user.save(function(err , data) {
-        if(err) {
-            res.json({"status" : false})
-            return console.error(err);
+    
+    Users.findOne({ email: req.body.email }, function (err, user) {
+        if (user) {
+            res.status(409);
+            res.json({
+                "status" : false
+            });
+        } else {
+            var user = new Users;
+            user.name = req.body.name;
+            user.email = req.body.email;
+            
+            user.setPassword(req.body.password);
+            
+            user.save(function(err , data) {
+                if(err) {
+                    res.json({"status" : false, "message" : "accountAlreadyRegistred"})
+                    return console.error(err);
+                }
+                var token = user.generateJwt();
+                res.status(200);
+                res.json({
+                    "status" : true,
+                    "token" : token
+                });
+            });
         }
-        var token = user.generateJwt();
-        res.status(200);
-        res.json({
-            "token" : token
-        });
     });
 };
 

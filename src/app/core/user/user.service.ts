@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 
 interface TokenResponse {
+  status: boolean;
   token: string;
 }
 
@@ -13,7 +14,7 @@ export class UserService {
   constructor( private http: HttpClient ) { }
 
   registerUser( data ) {
-    return this.http.post('/api/register', data, {
+    return this.http.post<TokenResponse>('/api/register', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     });
   }

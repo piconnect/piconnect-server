@@ -24,6 +24,9 @@
             <md-error *ngIf="registerForm.get('email').hasError('required') && !registerForm.get('email').value">
                 Email is <strong>required</strong>
             </md-error> 
+            <md-error *ngIf="registerForm.get('email').hasError('already_registred')">
+                This account is <strong>already registred</strong>
+            </md-error> 
         </md-form-field>
         <md-form-field class="full-width">
             <input 
