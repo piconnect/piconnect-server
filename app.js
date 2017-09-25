@@ -27,7 +27,6 @@ var devApi = require('./routes/devapi');
 var api = require('./routes/api');
 var angularApp = require('./routes/angularapp');
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
