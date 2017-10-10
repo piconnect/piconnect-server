@@ -1,82 +1,82 @@
 import { NgModule } from '@angular/core';
 
-import {MdCheckboxModule} from '@angular/material';
-import {MdInputModule} from '@angular/material';
-import {MdRadioModule} from '@angular/material';
-import {MdSelectModule} from '@angular/material';
-import {MdDatepickerModule} from '@angular/material';
-import {MdSlideToggleModule} from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material';
+import {MatRadioModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material';
 
-import {MdMenuModule} from '@angular/material';
-import {MdSidenavModule} from '@angular/material';
-import {MdToolbarModule} from '@angular/material';
+import {MatMenuModule} from '@angular/material';
+import {MatSidenavModule} from '@angular/material';
+import {MatToolbarModule} from '@angular/material';
 
-import {MdListModule} from '@angular/material';
-import {MdCardModule} from '@angular/material';
-import {MdGridListModule} from '@angular/material';
-import {MdTabsModule} from '@angular/material';
-import {MdExpansionModule} from '@angular/material';
+import {MatListModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
+import {MatGridListModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material';
+import {MatExpansionModule} from '@angular/material';
 
-import {MdButtonModule} from '@angular/material';
-import {MdIconModule} from '@angular/material';
-import {MdProgressBarModule} from '@angular/material';
-import {MdProgressSpinnerModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import {MatIconModule} from '@angular/material';
+import {MatProgressBarModule} from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material';
 
-import {MdDialogModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material';
 
-import {MdTableModule} from '@angular/material';
-import {MdSortModule} from '@angular/material';
-import {MdPaginatorModule} from '@angular/material';
+import {MatTableModule} from '@angular/material';
+import {MatSortModule} from '@angular/material';
+import {MatPaginatorModule} from '@angular/material';
 
 
 @NgModule({
   imports: [
-    MdCheckboxModule,
-    MdInputModule,
-    MdRadioModule,
-    MdSelectModule,
-    MdDatepickerModule,
-    MdSlideToggleModule,
-    MdMenuModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdListModule,
-    MdCardModule,
-    MdGridListModule,
-    MdTabsModule,
-    MdExpansionModule,
-    MdButtonModule,
-    MdIconModule,
-    MdProgressBarModule,
-    MdProgressSpinnerModule,
-    MdDialogModule,
-    MdTableModule,
-    MdSortModule,
-    MdPaginatorModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
-    MdCheckboxModule,
-    MdInputModule,
-    MdRadioModule,
-    MdSelectModule,
-    MdDatepickerModule,
-    MdSlideToggleModule,
-    MdMenuModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdListModule,
-    MdCardModule,
-    MdGridListModule,
-    MdTabsModule,
-    MdExpansionModule,
-    MdButtonModule,
-    MdIconModule,
-    MdProgressBarModule,
-    MdProgressSpinnerModule,
-    MdDialogModule,
-    MdTableModule,
-    MdSortModule,
-    MdPaginatorModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }

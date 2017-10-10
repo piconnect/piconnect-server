@@ -1,40 +1,40 @@
-<md-card class="signed-out-wrapper">
+<mat-card class="signed-out-wrapper">
     <h2 class="full-width text-center">Login</h2>
     <p class="full-width text-center">Please enter your email and password to login</p>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <md-form-field class="full-width">
+        <mat-form-field class="full-width">
             <input
-            mdInput 
+            matInput 
             placeholder="Email" 
             type="text" 
             formControlName="email">
-            <md-error *ngIf="loginForm.get('email').hasError('email') && loginForm.get('email').value">
+            <mat-error *ngIf="loginForm.get('email').hasError('email') && loginForm.get('email').value">
                 Please enter a <strong>valid</strong> email
-            </md-error>
-            <md-error *ngIf="loginForm.get('email').hasError('required') && !loginForm.get('email').value">
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email').hasError('required') && !loginForm.get('email').value">
                 Email is <strong>required</strong>
-            </md-error>
-            <md-error *ngIf="loginForm.get('email').hasError('not_found')">
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email').hasError('not_found')">
                 Please enter your correct email
-            </md-error>
-        </md-form-field>
-        <md-form-field class="full-width">
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
             <input 
-            mdInput 
+            matInput 
             placeholder="Password" 
             type="password" 
             formControlName="password">
-            <md-error *ngIf="loginForm.get('password').hasError('required')">
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">
                 Password is <strong>required</strong>
-            </md-error>
-            <md-error *ngIf="loginForm.get('password').hasError('wrong_password')">
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password').hasError('wrong_password')">
                 Your entered password is incorrect.
-            </md-error>
-        </md-form-field>
-        <a routerLink="/forget-password" md-button class="float-right" color="warn">Forget Password</a>
+            </mat-error>
+        </mat-form-field>
+        <a routerLink="/forget-password" mat-button class="float-right" color="warn">Forget Password</a>
         <div class="btn-wrapper">
-            <button md-raised-button color="primary" type="submit">Login</button>
-            <a routerLink="/register" md-raised-button class="float-right">Register</a>
+            <button mat-raised-button color="primary" type="submit">Login</button>
+            <a routerLink="/register" mat-raised-button class="float-right">Register</a>
         </div>
     </form>
-</md-card>
+</mat-card>
