@@ -1,9 +1,9 @@
-md-sidenav-container {
+mat-sidenav-container {
     height: calc( 100% - 64px );
-    & md-sidenav {
+    & mat-sidenav {
         box-shadow: 3px 0 6px rgba(0,0,0,.24);
     }
 }
-md-sidenav {
+mat-sidenav {
     width: 240px;
 }
