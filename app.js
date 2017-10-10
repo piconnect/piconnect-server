@@ -7,8 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+// var server = require('http').createServer(app);
+// var io = require('socket.io')(server);
 
 //Database Connection
 mongoose.Promise = global.Promise;
@@ -44,12 +44,12 @@ app.use( "/uploads" ,express.static(path.join(__dirname, 'uploads')));
 app.use('/api/v1', devApi);
 app.use('/api', api);
 app.use( "*" , angularApp );
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+// io.on('connection', function (socket) {
+//   socket.emit('news', { hello: 'world' });
+//   socket.on('my other event', function (data) {
+//     console.log(data);
+//   });
+// });
 
 app.use(function (err, req, res, next) {
   res.sendFile( path.join( __dirname, "dist/index.html" ));
