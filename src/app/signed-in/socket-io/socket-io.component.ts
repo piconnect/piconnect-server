@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as io from '../../../../node_modules/socket.io-client/dist/socket.io.js';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { SocketIoService } from '../../core/socket-io/socket-io.service';
 
 @Component({
   selector: 'app-pi-socket-io',
@@ -7,23 +10,25 @@ import * as io from '../../../../node_modules/socket.io-client/dist/socket.io.js
   styleUrls: ['./socket-io.component.css']
 })
 export class SocketIoComponent implements OnInit {
+  messageForm: FormGroup;
 
-  constructor() { }
-
-  private socket = io.connect('/');
-  messages = [];
-
-  ngOnInit() {
-    this.socket.on('piconnect-socket-io', function (data) {
-      this.messages.push(data);
-      // this.emit('my other event', { my: 'data' });
+  constructor( formbuilder: FormBuilder, private socketService: SocketIoService  ) {
+    this.messageForm = formbuilder.group({
+      'message': [ '', Validators.required ]
     });
   }
 
-  checkMessage() {
-    this.socket.on('piconnect-socket-io', function (data) {
-      this.messages.push(data);
-      // this.emit('my other event', { my: 'data' });
-    });
+  messages = [];
+
+  ngOnInit() {
+    this.socketService.getMessage( this.messages );
+  }
+
+  sendMessage() {
+    if ( this.messageForm.status === 'INVALID' ) {
+      return;
+    }
+    this.socketService.sendMessage( this.messageForm.value );
+    this.messageForm.reset();
   }
 }

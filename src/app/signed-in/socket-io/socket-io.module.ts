@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SocketIoRoutingModule } from './socket-io-routing.module';
 
@@ -11,6 +12,7 @@ import { MaterialModule } from '../../shared/material.module';
   imports: [
     CommonModule,
     SocketIoRoutingModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   declarations: [

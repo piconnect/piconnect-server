@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './user/user.service';
+import { SocketIoService } from './socket-io/socket-io.service';
+import { MainService } from './main/main.service';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { UserService } from './user/user.service';
   declarations: [],
   providers : [
     AuthGuard,
-    UserService
+    UserService,
+    SocketIoService,
+    MainService
   ]
 })
 
