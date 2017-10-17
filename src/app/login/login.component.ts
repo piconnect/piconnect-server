@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { UserService } from '../core/user/user.service';
 
@@ -30,11 +31,12 @@ export class LoginComponent {
         localStorage.setItem( 'isPiconnectLoggedIn', response.token );
         this.router.navigate(['dashboard']);
       },
-      err => {
-        if ( err.error.message === 'wrong_password' ) {
+      (err: HttpErrorResponse) => {
+        const err_message = JSON.parse( err.error );
+        if ( err_message.message === 'wrong_password' ) {
           const password = this.loginForm.controls['password'];
           password.setErrors({'wrong_password' : true});
-        } else if ( err.error.message === 'not_found' ) {
+        } else if ( err_message.message === 'not_found' ) {
           const email = this.loginForm.controls['email'];
           email.setErrors({'not_found' : true});
         }
