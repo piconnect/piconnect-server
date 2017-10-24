@@ -8,7 +8,7 @@ export class SocketIoService {
 
   constructor( private http: HttpClient ) { }
 
-  private socket = io.connect('/');
+  private socket = io();
 
   getMessage( messageArr ) {
     this.socket.on('piconnect-socket-io', function (data) {
