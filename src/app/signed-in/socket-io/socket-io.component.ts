@@ -14,7 +14,7 @@ export class SocketIoComponent implements OnInit {
 
   constructor( formbuilder: FormBuilder, private socketService: SocketIoService  ) {
     this.messageForm = formbuilder.group({
-      'message': [ '', Validators.required ]
+      'message': [ '' ]
     });
   }
 
@@ -25,7 +25,7 @@ export class SocketIoComponent implements OnInit {
   }
 
   sendMessage() {
-    if ( this.messageForm.status === 'INVALID' ) {
+    if ( this.messageForm.value.message === null || this.messageForm.value.message === '' ) {
       return;
     }
     this.socketService.sendMessage( this.messageForm.value );
