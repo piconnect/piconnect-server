@@ -1,11 +1,13 @@
-<mat-list>
-  <mat-list-item *ngFor="let message of messages">{{ message }}</mat-list-item>
-</mat-list>
-<form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
-  <mat-form-field>
-    <input type="text" matInput placeholder="Message" formControlName="message" />
-  </mat-form-field>
-  <div>
-    <button type="submit" mat-raised-button color="primary">Send Message</button>
-  </div>
-</form>
+<div class="wrapper">
+  <mat-list>
+    <mat-list-item *ngFor="let message of messages"><span class="primary" >{{ message.name }} </span>: {{ message.message }}</mat-list-item>
+  </mat-list>
+  <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Message" formControlName="message" />
+    </mat-form-field>
+    <div>
+      <button type="submit" mat-raised-button color="primary">Send Message</button>
+    </div>
+  </form>
+</div>

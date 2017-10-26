@@ -5,6 +5,9 @@ import 'rxjs/Rx';
 
 interface TokenResponse {
   token: string;
+  id: number;
+  email: string;
+  name: string;
 }
 
 @Injectable()

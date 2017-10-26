@@ -12,12 +12,15 @@ export class SocketIoService {
 
   getMessage( messageArr ) {
     this.socket.on('piconnect-socket-io', function (data) {
-      messageArr.push( data.message );
+      messageArr.push( data );
     });
   }
 
   sendMessage( data ) {
-    this.socket.emit('piconnect-socket-io', { message : data.message });
+    this.socket.emit('piconnect-socket-io', {
+      message : data.message,
+      name : localStorage.getItem( 'name' )
+    });
   }
 
 }

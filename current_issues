@@ -1,0 +1,2 @@
+1. Doesn't redirect to dashboard if user is logged in and try to hit any signed out page.
+2. Remove all floats from css.

@@ -29,6 +29,8 @@ export class LoginComponent {
     .subscribe(
       response => {
         localStorage.setItem( 'isPiconnectLoggedIn', response.token );
+        localStorage.setItem( 'name', response.name );
+        localStorage.setItem( 'email', response.email );
         this.router.navigate(['dashboard']);
       },
       (err: HttpErrorResponse) => {

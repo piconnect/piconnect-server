@@ -31,8 +31,8 @@ server.on('listening', onListening);
 
 var io = require('socket.io')(server);
 io.on('connection', function (socket) {
-  socket.on('piconnect-socket-io', function (data) {
-    io.emit('piconnect-socket-io', { message: data.message });
+  socket.on( 'piconnect-socket-io', function (data) {
+    io.emit( 'piconnect-socket-io', data );
   });
 });
 
