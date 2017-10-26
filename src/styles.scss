@@ -59,23 +59,24 @@ html, body{
 .text-right{
     text-align: right
 }
-.float-right{
-    float: right
+.gap-filler{
+    flex: 1 1 auto;
 }
-.float-left{
-    float: left
+.wrapper{
+    padding: 15px;
+    display: flex;
+}
+.no-padding{
+    padding: 0 !important;
+}
+span.primary{
+    color: #3f52b5;
 }
 .signed-out-wrapper{
     max-width: 400px;
     margin: 10% auto 50px;
     .btn-wrapper{
-        clear: both;
         padding-top: 15px;
+        display: flex;
     }
-}
-.wrapper{
-    padding: 15px;
-}
-span.primary{
-    color: #3f52b5;
 }

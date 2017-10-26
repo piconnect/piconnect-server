@@ -31,10 +31,14 @@
                 Your entered password is incorrect.
             </mat-error>
         </mat-form-field>
-        <a routerLink="/forget-password" mat-button class="float-right" color="warn">Forget Password</a>
+        <div class="wrapper no-padding">
+            <span class="gap-filler"></span>
+            <a routerLink="/forget-password" mat-button class="" color="warn">Forget Password</a>
+        </div>
         <div class="btn-wrapper">
             <button mat-raised-button color="primary" type="submit">Login</button>
-            <a routerLink="/register" mat-raised-button class="float-right">Register</a>
+            <span class="gap-filler"></span>
+            <a routerLink="/register" mat-raised-button class="">Register</a>
         </div>
     </form>
 </mat-card>
