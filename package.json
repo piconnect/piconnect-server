@@ -28,7 +28,6 @@
     "@angular/router": "^4.3.6",
     "@types/node": "^6.0.84",
     "body-parser": "~1.17.1",
-    "coap-shepherd": "^0.2.6",
     "cookie-parser": "~1.4.3",
     "core-js": "^2.5.1",
     "dotenv": "^4.0.0",

@@ -43,17 +43,6 @@ app.use('/api/v1', devApi);
 app.use('/api', api);
 app.use( "*" , angularApp );
 
-var cserver = require('coap-shepherd');
- 
-cserver.on('ready', function () {
-    console.log('Server is ready.');
-});
- 
-cserver.start(function (err) {  // start the server 
-    if (err)
-        console.log(err);
-});
-
 app.use(function (err, req, res, next) {
   res.sendFile( path.join( __dirname, "dist/index.html" ));
 });
