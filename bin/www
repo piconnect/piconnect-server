@@ -7,6 +7,7 @@
 require('dotenv').config()
 var app = require('../app');
 var http = require('http');
+var io = require('../config/socket');
 
 /**
  * Get port from environment and store in Express.
@@ -29,12 +30,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-var io = require('socket.io')(server);
-io.on('connection', function (socket) {
-  socket.on( 'piconnect-socket-io', function (data) {
-    io.emit( 'piconnect-socket-io', data );
-  });
-});
+io.startIo(server);
 
 /**
  * Normalize a port into a number, string, or false.
