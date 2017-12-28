@@ -19,6 +19,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // Require all Configuration
 var passConfig = require('./config/passport');
 passport.use(passConfig);
+var mqtt = require('./config/mqtt');
+mqtt.startMqtt();
 
 //Require all routes
 var devApi = require('./routes/devapi');
