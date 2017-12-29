@@ -9,7 +9,8 @@ const routes: Routes = [
     children : [
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       { path: 'test-page', loadChildren: './test-page/test-page.module#TestPageModule' },
-      { path: 'socket-io', loadChildren: './socket-io/socket-io.module#SocketIoModule' }
+      { path: 'socket-io', loadChildren: './socket-io/socket-io.module#SocketIoModule' },
+      { path: 'mqtt', loadChildren: './mqtt/mqtt.module#MqttModule' }
     ]
   }
 ];

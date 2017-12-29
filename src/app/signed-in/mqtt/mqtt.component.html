@@ -1,0 +1,16 @@
+<div class="wrapper mat-typography">
+  <h1>Topic - 'piconnect-mqtt-test'</h1>
+  <mat-list>
+    <mat-list-item *ngFor="let message of messages">
+      {{ message }}
+    </mat-list-item>
+  </mat-list>
+  <form [formGroup]="messageForm" (ngSubmit)="publishMessage()">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Message" formControlName="message" />
+    </mat-form-field>
+    <div>
+      <button type="submit" mat-raised-button color="primary">Publish Message</button>
+    </div>
+  </form>
+</div>
