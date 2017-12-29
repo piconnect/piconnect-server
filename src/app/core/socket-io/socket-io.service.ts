@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import * as io from '../../../../node_modules/socket.io-client/dist/socket.io.js';
+import * as io from 'socket.io-client/dist/socket.io.js';
 
 @Injectable()
 export class SocketIoService {
@@ -21,6 +21,16 @@ export class SocketIoService {
       message : data.message,
       name : localStorage.getItem( 'name' )
     });
+  }
+
+  getMqttMessage( messageArr ) {
+    this.socket.on('piconnect-mqtt-test', function (data) {
+      messageArr.push(data);
+    });
+  }
+
+  publishMqttMessage( data ) {
+    this.socket.emit('piconnect-mqtt-test', data);
   }
 
 }

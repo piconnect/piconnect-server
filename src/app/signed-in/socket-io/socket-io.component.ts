@@ -12,7 +12,7 @@ import { SocketIoService } from '../../core/socket-io/socket-io.service';
 export class SocketIoComponent implements OnInit {
   messageForm: FormGroup;
 
-  constructor( formbuilder: FormBuilder, private socketService: SocketIoService  ) {
+  constructor( formbuilder: FormBuilder, private socketService: SocketIoService ) {
     this.messageForm = formbuilder.group({
       'message': [ '' ]
     });

@@ -1,18 +1,31 @@
-var S = require('socket.io');
+const S = require('socket.io');
 
-let broadcastToAll = function (socket, io) {
+let IoHandler = new Object;
+
+let broadcastToAll = function (socket) {
     socket.on( 'piconnect-socket-io', function (data) {
-        io.emit( 'piconnect-socket-io', data );
+        IoHandler.io.emit( 'piconnect-socket-io', data );
     });
 }
 
-var startIo = function(server){
-    const io = S.listen(server);
-    io.on('connection', function(socket) {
-        broadcastToAll(socket, io)
+let listenForMqtt = function (socket) {
+    socket.on('piconnect-mqtt-test', function (data) {
+        const mqttc = require('./mqtt');
+        mqttc.publishMessage( data );
     });
+}
 
-    return io;
+IoHandler.startIo = function(server){
+    IoHandler.io = S.listen(server);
+    IoHandler.io.on('connection', function(socket) {
+        broadcastToAll(socket);
+        listenForMqtt(socket);
+    });
 };
 
-module.exports.startIo = startIo
+IoHandler.broadcastMqttMessage = function ( message ) {
+    console.log(message);
+    IoHandler.io.emit('piconnect-mqtt-test', message);
+}
+
+module.exports = IoHandler

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { SocketIoService } from '../../core/socket-io/socket-io.service';
+
 @Component({
   selector: 'app-pi-mqtt',
   templateUrl: './mqtt.component.html',
@@ -9,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class MqttComponent implements OnInit {
   messageForm: FormGroup;
 
-  constructor(formbuilder: FormBuilder) {
+  constructor( formbuilder: FormBuilder, private socketService: SocketIoService ) {
     this.messageForm = formbuilder.group({
       'message': ['']
     });
@@ -18,13 +20,15 @@ export class MqttComponent implements OnInit {
   messages = [];
 
   ngOnInit() {
+    this.socketService.getMqttMessage(this.messages);
   }
 
   publishMessage() {
     if (this.messageForm.value.message === null || this.messageForm.value.message === '') {
       return;
     }
-    console.log( this.messageForm.value.message );
+    this.socketService.publishMqttMessage(this.messageForm.value.message);
+    this.messageForm.reset();
   }
 
 }

@@ -1,16 +1,22 @@
 const mqtt = require('mqtt');
+
+let mqttHandler = new Object;
+
 const client = mqtt.connect('mqtt://35.190.180.150');
 
-var startMqtt = function () {
+mqttHandler.startMqtt = function () {
     client.on('connect', function () {
         client.subscribe('piconnect-mqtt-test');
-        client.publish('piconnect-mqtt-test', 'Hello from node');
     })
 
     client.on('message', function (topic, message) {
-        // message is Buffer
-        console.log(message.toString());
+        let io = require('./socket');
+        io.broadcastMqttMessage( message.toString() )
     })
 }
 
-module.exports.startMqtt = startMqtt;
+mqttHandler.publishMessage = function (message) {
+    client.publish('piconnect-mqtt-test', message);
+}
+
+module.exports = mqttHandler;
